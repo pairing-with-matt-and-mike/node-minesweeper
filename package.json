@@ -1,0 +1,22 @@
+{
+  "name": "minesweeper",
+  "version": "0.1.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8.0"
+  },
+  "scripts": {
+    "test": "nodeunit tests/*.tests.js"
+  },
+  "keywords": [
+    "minesweeper"
+  ],
+  "main": "./lib/index.js",
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://opensource.org/licenses/BSD-2-Clause"
+    }
+  ]
+}
