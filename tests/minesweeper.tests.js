@@ -3,11 +3,11 @@ var minesweeper = require("../");
 
 exports["game is initially rendered as all unexplored"] = function(test) {
     var io = fakeIo();
-    
+
     minesweeper.runGame(io, 3);
-    
+
     test.equal(io.output(), "  A B C \n0 . . . \n1 . . . \n2 . . . \n");
-    
+
     test.done();
 };
 
@@ -59,6 +59,20 @@ exports["external game state for explored square mine if there is a mine at that
     test.done();
 };
 
+exports["fully explored board is finished"] = function(test) {
+    var empty = minesweeper.states.empty;
+    var mine = minesweeper.states.mine;
+    var game = minesweeper.createGame([
+        [empty, empty],
+        [empty, mine]
+    ]);
+    game.explore(0, 0);
+    game.explore(1, 0);
+    game.explore(0, 1);
+    test.ok(game.isFinished);
+    test.done();
+};
+
 
 function fakeIo() {
     var output = [];
@@ -67,7 +81,7 @@ function fakeIo() {
             output.push(value);
         },
         onLine: function(name, callback) {
-            
+
         },
         output: function() {
             return output.join("");
